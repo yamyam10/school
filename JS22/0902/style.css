@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.box {
+    width: 100vw;
+    height: 100vh;
+    background: -webkit-linear-gradient(top, rgb(10, 0, 0) 40%, rgb(42, 19, 59) 70%, rgb(24, 22, 92));
+    display: grid;
+    place-content: center;
+}
+
+.timer {
+    font-family: "Share Tech Mono", monospace;
+    text-align: center;
+    font-size: 72px;
+    color: white;
+    position: relative;
+    z-index: 6;
+}
+
+#actionButton {
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 0;
+    background-color: #007bbb;
+    color: white;
+    border-radius: 0.75rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 6;
+}
+#actionButton svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.moon {
+    position: absolute;
+    right: 100px;
+    top: 65px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    box-shadow: 0 0 160px 0px #fff, 0 0 30px -4px #fff, 0 0 8px 2px rgb(255 255 255 / 26%);
+    background: #fdefdf;
+    z-index: 10;
+}
+.moon img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+}
+.building {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200vw;
+    animation: slide linear 120s infinite;
+    animation-play-state: paused;
+}
+
+@keyframes slide {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -100%;
+    }
+}
+
+.star {
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    animation-name: twinkle;
+    animation-iteration-count: infinite;
+}
+
+@keyframes twinkle {
+    50% {
+        transform: scale(0.2);
+        box-shadow: 0 0 160px 0px #fff, 0 0 30px -4px #fff, 0 0 8px 2px rgb(255 255 255 / 26%);
+    }
+}

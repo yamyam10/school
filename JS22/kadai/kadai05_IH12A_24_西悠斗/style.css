@@ -1,0 +1,350 @@
+/* 背景 / Background */
+body {
+  background-image: url("image/bk.png");
+  background-size: cover;
+  /* background: #; */
+  /* background-image: linear-gradient(
+  0deg,
+  #ff9438 0%,
+  #63d0e2 100%
+);
+background-attachment: fixed;
+background-size: 100vw 100vh; */
+  /* cursor: none; */
+}
+
+/* オーバーレイ / Overlay */
+#overlay {
+  user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  background: #0006;
+  color: #fffc;
+  z-index: 5;
+}
+#overlay.disabled {
+  display: none;
+}
+#overlay > p {
+  width: 100vw;
+  font-size: 40px;
+  text-align: center;
+}
+#overlay > p > span {
+  display: inline-block;
+  padding-right: 20px;
+  margin-right: 20px;
+  border-right: 1px solid #fff6;
+}
+
+/* フッターと音源 / Header and audio source */
+#header,
+#media {
+  /* ページ左に固定 / Stick to the page left */
+  position: fixed;
+  left: 0;
+
+  /* 背景色と文字色 / Background and text color */
+  background: #000c;
+  color: #fff;
+
+  z-index: 1;
+}
+
+/* フッター / Footer */
+#header {
+  /* 上寄せ / Top-aligned */
+  top: 20px;
+
+  /* 少し余裕を持たせる / Box with a small padding */
+  padding: 10px 16px;
+
+  /* フォントサイズ小さめ、太め / Small but bold typography */
+  font-size: 10.5px;
+  font-weight: bold;
+
+  /* 子要素を横に並べて配置 / Align child content to the right */
+  display: flex;
+
+  /* 子要素は縦に中央揃え / Vertically middle-aligned */
+  align-items: center;
+}
+
+/* 再生ボタン / Play button */
+#control {
+  font-size: 21px;
+  padding-right: 10px;
+  border-right: 1px solid #fff9;
+}
+#control.disabled {
+  display: none;
+}
+#control a {
+  color: rgb(99 208 226);
+  text-decoration: none;
+}
+#control a.disabled {
+  opacity: 0.3;
+}
+#control a:hover {
+  color: rgb(255 148 56);
+}
+
+/* アーティストと楽曲の情報 / Artist and song info */
+#meta {
+  padding-left: 10px;
+}
+#meta span {
+  font-weight: normal;
+}
+
+/* 音源 / Audio source */
+#media {
+  /* 下寄せ / Bottom-aligned */
+  bottom: 10px;
+}
+#media.disabled > .textalive-media-wrapper {
+  width: 0;
+  height: 0;
+}
+
+/**
+* ビート情報が取れるようになったらビートバーを表示
+* Show beat bar when beat information becomes available
+*/
+@keyframes activateBeatBar {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      width: 100%;
+      opacity: 1;
+  }
+}
+
+/**
+* ビート毎に右に広げてフェードアウト
+* Make beat bar span to the right and then fade out
+*/
+@keyframes showBeatBar {
+  0% {
+      width: 0;
+      opacity: 1;
+  }
+  50% {
+      width: 100%;
+      opacity: 1;
+  }
+  100% {
+      width: 100%;
+      opacity: 0;
+  }
+}
+
+/**
+* 歌詞が下からせり出してくる
+* Make lyrics text appear from the bottom
+*/
+@keyframes showLyrics {
+  0% {
+      /* transform: translate3d(0, 100%, 0) scale(0.6) rotate(90deg); */
+      opacity: 0;
+  }
+  100% {
+      /* transform: translate3d(0, 0, 0) scale(1); */
+      opacity: 1;
+  }
+}
+
+@keyframes jump {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+      text-shadow: 0px 0px 0px #fdceff;
+  }
+  100% {
+      transform: translateY(0);
+      text-shadow: 1px 1px 5px #fdceff;
+  }
+}
+
+/* ビートバー / Beat bar */
+#bar {
+  opacity: 0;
+  height: 3px;
+  background: rgb(255, 200, 255);
+}
+#bar.active {
+  animation: activateBeatBar 0.3s;
+}
+#bar.beat {
+  animation: showBeatBar 0.5s;
+}
+
+/* 歌詞 / Lyrics */
+#lyrics {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  padding: 1rem;
+  line-height: 2em;
+  font-size: 36px;
+  font-family: "Shippori Mincho B1", serif;
+  color: #252525;
+  /* text-shadow: 2px 2px 3px rgb(228 169 33); */
+  user-select: none;
+  /* cursor: pointer; */
+  width: 90%;
+
+  /* 歌詞をちょっと回転させる / Rotate text */
+  /* transform: rotateX(10deg) rotateY(-10deg); */
+  transform: translate(-50%, -50%);
+}
+
+#textGhost {
+  font-family: 'DotGothic16';
+  position: relative;
+  z-index: 0;
+  color: #bebebe;
+}
+
+#text {
+  -webkit-text-stroke: 0.05px #fc0076;
+  text-shadow: 2px 3px 4px #fc00bb;
+  font-family: 'DotGothic16';
+  position: absolute;
+  z-index: 1;
+  color: white;
+  font-weight: bold;
+}
+
+#prevText{
+  position: relative;
+  top:-40px;
+  -webkit-text-stroke: 0.05px #fc0076;
+  text-shadow: 2px 3px 4px #fc00bb;
+  font-family: 'DotGothic16';
+  position: absolute;
+  z-index: 2;
+  color: white;
+  font-weight: bold;
+}
+
+#text > div {
+  /* 文字ごとに改行しない / No line-break per char */
+  display: inline-block;
+}
+#text > div > ruby {
+  animation: showLyrics 0.5s;
+  /* animation: showLyrics 0.5s, jump 0.5s 0.5s; */
+  animation-fill-mode: forwards;
+}
+
+/**
+* 名詞などを強調表示する
+* Emphasize nouns
+*/
+#text .noun {
+  /* color: rgb(242 251 253); */
+  /* color: #252525;
+  font-size: 40px; */
+}
+
+/**
+* フレーズ終わりで右にマージンを空けて読みやすくする
+* Add right margin to the last char in phrases
+*/
+#text .lastChar {
+  /* margin-right: 40px; */
+}
+
+#text .firstCharInEnglishWord {
+  /* margin-left: 20px; */
+}
+
+#text .lastCharInEnglishWord {
+  /* margin-right: 20px; */
+}
+
+#text .lastCharInEnglishWord + .firstCharInEnglishWord {
+  /* margin-left: 0; */
+}
+
+#seekbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: rgba(255 255 255 / 40%);
+}
+
+#seekbar > div {
+  width: 0;
+  height: 100%;
+  background: rgba(0, 255, 255, 0.8);
+}
+
+.sectionTitle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 1rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  background-color: #25252580;
+  box-shadow: 0 0 5px 0 #a5a5a5;
+  transition: all 0.1s;
+}
+
+#cursor {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  /* padding-bottom: 60px; */
+
+  position: fixed;
+  transform: rotate(45deg);
+  animation: 0.8s star linear infinite;
+  z-index: 0;
+}
+
+a{
+  cursor: pointer;
+  display:inline-block;
+  }
+
+/* @keyframes negifuri {
+  0% {
+      transform: translate(0px, 0px) rotate(22.5deg);
+  }
+  50% {
+      transform: translate(0px, 0px) rotate(67.5deg);
+  }
+  100% {
+      transform: translate(0px, 0px) rotate(22.5deg);
+  }
+} */
+
+/* @keyframes star {
+  0%{ transform-origin:50% 50%;}
+  100%{ transform:rotate(360deg);
+  }
+} */
+
+@keyframes star {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+  }

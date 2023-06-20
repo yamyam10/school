@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS22 Kadai01</title>
+</head>
+<body>
+    <div>
+        <h1 id="title">Q. 津留先生の出身地は関西である</h1>
+        <ul class="list">
+            <li>
+                <button id="o">O</button>
+            </li>
+            <li>
+                <button id="x">X</button>
+            </li>
+        </ul>
+        <div class="result">
+            <p class="title"></p>
+            <p class="description"></p>
+        </div>
+    </div>
+    <script>
+        // button 押したら
+
+        // function 名前(引数) {処理}
+        // function (引数) {処理}
+
+        document.getElementById("o").onclick = function(e) {
+            // buttonを押したときに実行される処理を書く
+            document.querySelector(".result .title").innerHTML = "正解"
+            document.querySelector(".result .description").innerHTML = "HAL大阪の一期生です"
+        }
+
+        document.getElementById("x").onclick = function(e) {
+            // buttonを押したときに実行される処理を書く
+            document.querySelector(".result .title").innerHTML = "不正解"
+            document.querySelector(".result .description").innerHTML = "この問題がわからない人は勉強不足"
+        }
+    </script>
+</body>
+</html>

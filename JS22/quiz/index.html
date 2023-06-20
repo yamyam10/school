@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>音感クイズ</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">
+                <h1 class="title">
+                    下のボタンを押したときに流れる音はどれでしょう？
+                </h1>
+                <button class="play">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        view-box="0 0 24 24"
+                        fill="currentColor"
+                        class="icon icon-play"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                </button>
+                <div class="piano">
+                    <div class="cde">
+                        <div class="keys black">
+                            <button class="key db"></button>
+                            <button class="key eb"></button>
+                        </div>
+                        <div class="keys white">
+                            <button class="key c"></button>
+                            <button class="key d"></button>
+                            <button class="key e"></button>
+                        </div>
+                    </div>
+                    <div class="fgab">
+                        <div class="keys black">
+                            <button class="key gb"></button>
+                            <button class="key ab"></button>
+                            <button class="key bb"></button>
+                        </div>
+                        <div class="keys white">
+                            <button class="key f"></button>
+                            <button class="key g"></button>
+                            <button class="key a"></button>
+                            <button class="key b"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="result hidden">
+                    <p>正解</p>
+                    <button class="reset">もう一度</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,157 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #252525;
+}
+
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+.box {
+    width: 90vw;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+}
+
+.box .play,
+.box .reset {
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    border: 1px solid #252525;
+    transition: all 0.5s;
+}
+
+.box .play:hover,
+.box .reset:hover {
+    background-color: #ededed;
+}
+
+.box .play {
+    display: grid;
+    place-content: center;
+}
+
+.box .play .icon {
+    width: 2rem;
+    height: 2rem;
+    fill: #252525;
+    transition: all 0.5s;
+}
+
+.box .play .icon.icon-play path {
+    d: path(
+        "M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+    );
+}
+
+.box .play .icon.icon-pause path {
+    d: path(
+        "M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z"
+    );
+}
+
+.title {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+.piano {
+    margin: 3rem 0;
+    display: flex;
+    border: 1px solid #252525;
+}
+
+.cde {
+    position: relative;
+    flex-basis: calc(100% * 3 / 7);
+}
+
+.fgab {
+    position: relative;
+    flex-basis: calc(100% * 4 / 7);
+}
+
+.piano .keys.white {
+    width: 100%;
+    display: flex;
+}
+
+.piano .keys.black {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 170px;
+    display: flex;
+    justify-content: space-evenly;
+    pointer-events: none;
+}
+
+.piano .key {
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.piano .keys.white .key {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #252525;
+    background-color: white;
+}
+
+.piano .keys.black .key {
+    pointer-events: auto;
+    background-color: #020202;
+    border: 1px solid #252525;
+    border-radius: 0 0 0.2rem 0.2rem;
+}
+
+.piano .cde .keys.black .key {
+    width: calc(100% / 3 * 0.5);
+}
+
+.piano .fgab .keys.black .key {
+    width: calc(100% / 4 * 0.5);
+}
+
+.piano .keys.black .key:hover {
+    background-color: #656565;
+}
+.piano .keys.white .key:hover {
+    background-color: #eee;
+}
+
+.result {
+    margin: 3rem 0;
+}
+
+.result p {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.result .reset {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.piano .keys .key.answer {
+    background-color: #cfcfff;
+}
+
+.piano .keys .key.correct {
+    background-color: #90dfcc;
+}

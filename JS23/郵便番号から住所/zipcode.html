@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郵便番号</title>
+</head>
+<body>
+    <div class="container">
+        <input id="zipcode" type="text">
+        <button id="button">
+            変換
+        </button>
+        <p id="result"></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        // ボタンが押されたら
+        document
+            .getElementById("button")
+            .addEventListener("click", (event) => {
+                // inputの値を取得し
+                const zipcode = document.getElementById("zipcode").value
+                console.log(zipcode.value);
+                // js -> サーバへの通信
+
+                axios
+                    .get(`https://api.zipaddress.net/?lang=ja&zipcode=${zipcode}`)
+                    .then((res) => {
+                        console.log(res.data);
+                        const address = res.data.data.fullAddress
+                        document.getElementById("result").innerText = address
+                    })
+
+            })
+
+
+        
+        // 結果を取得し
+        // #resultへ反映
+    </script>
+</body>
+</html>

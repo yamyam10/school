@@ -1,0 +1,23 @@
+document.getElementById("text").innerHTML = "<span>おはよう</span>"
+
+//setInterval(処理, 間隔(ミリ秒))
+//無名関数
+let count = 0
+setInterval(function() {
+    if(count % 2 === 0) {
+    } else {
+        document.querySelector("body").style.backgroundColor = "#40ae88"
+    }
+
+    //三項演算子
+    flag ? A : B
+    document.querySelector("body").style.backgroundColor = count % 2 === 0 ? "#40ae88" : "#20dd88"
+
+    count = count + 1
+}, 1000)
+
+//アロー関数
+//() => {}
+setTimeout(() => {
+    location.href = "https://google.com"
+}, 1000)

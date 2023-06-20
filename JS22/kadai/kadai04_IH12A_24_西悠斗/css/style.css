@@ -1,0 +1,340 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*****共通部分
+***********************************************/
+body {
+cursor: none; /*もともとあるカーソルは非表示に*/
+font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+"游ゴシック", "Yu Gothic", sans-serif;
+margin: 0;
+background: url(../images/img_background.jpg);
+/* 天地左右の中央に配置 */
+background-position: center center;
+/* タイル状に繰り返し表示しない */
+background-repeat: no-repeat;
+/* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+background-attachment: fixed;
+/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+background-size: cover;
+/* 背景画像が読み込まれる前に表示される背景のカラー */
+background-color: #000;
+}
+
+a{
+cursor: none;
+display:inline-block;
+margin:40px;
+}
+
+/*カーソル要素*/
+#cursor{
+position: fixed;
+
+/*丸の大きさと色の指定*/
+background: #fff;
+border-radius:10px;
+width: 20px;
+height: 20px;
+margin: -10px 0 0 -10px;/*真ん中にくるようにマイナスマージンで調整*/
+
+z-index: 15;/*一番手前に来るように*/
+pointer-events: none;/*クリックできなくなるのを防ぐため。noneで対応*/
+opacity: 0;
+transition: transform 0.1s;/*アニメーションの秒数指定*/
+}
+
+/*フレーム要素*/
+#frame{
+position: fixed;
+
+/*丸の大きさと色の指定*/
+background: rgb(0, 0, 0);
+width: 60px;
+height: 60px;
+border-radius:30px;
+margin: -30px 0 0 -30px;/*真ん中にくるようにマイナスマージンで調整*/
+z-index: 14;/*カーソルの後ろに来るように*/
+pointer-events: none;/*クリックできなくなるのを防ぐため。noneで対応*/
+opacity: 0;
+transition: transform 0.5s;/*アニメーションの秒数指定*/
+}
+
+#cursor.active,
+#frame.active{
+transform: scale(1.4);
+background: #ed5050;
+}
+.wrapper {
+width: 1040px;
+margin: 0 auto;
+}
+/*****ヘッダー*****/
+.header_top h1 {
+color: #000;
+font-size: 24px;
+text-shadow: 1px 1px 3px #00ffff;
+}
+.header_top h1 span {
+color: #000;
+font-size: 16px;
+}
+.header_top h2 {
+color: #fff;
+font-size: 12px;
+text-shadow: 1px 1px 3px #00ffff;
+}
+.header_top h2 span {
+color: #fff;
+font-size: 8px;
+}
+/*****メインビジュアル*****/
+.main_visual img {
+max-width: 100%;
+height: auto;
+display: block;
+}
+
+
+/*****ナビゲーション*****/
+.main_navigation ul {
+list-style: none; /*リストのスタイルを削除*/
+display: flex;
+justify-content: space-around;
+background-color: rgba(0, 0, 0, 0.8);
+}
+.main_navigation li {
+width: 25%;
+text-align: center;
+}
+.main_navigation a {
+padding: 15px 0;
+display: block; /*1つのli全体にリンクを有効にする*/
+text-decoration: none; /*ブラウザ標準のリンク装飾をオフに*/
+color: #fff; /*文字色の変更*/
+font-size: 14px; /*フォントサイズの指定*/
+letter-spacing: 5px; /*文字と文字の間隔をあける*/
+font-weight: bold; /*文字の太さを調整*/
+}
+.main_navigation a:hover {
+background-color: rgba(0, 0, 0, 1); /*背景色の指定*/
+color: #fff; /*文字色の変更*/
+transition: all 0.5s; /*ホバー時の動きをなめらかにする*/
+}
+/*****フッター*****/
+.footer_top {
+display: table; /*文字の上下中央寄せ*/
+width: 100%;
+height: 200px;
+text-align: center; /*文字の中央寄せ*/
+background-color: rgba(0, 0, 0, 0.8); /*背景色の指定*/
+}
+.footer_top .copyright {
+display: table-cell; /*文字の上下中央寄せ*/
+vertical-align: middle; /*文字の上下中央寄せ*/
+color: #fff;
+font-size: 14px;
+font-weight: bold;
+letter-spacing: 0.2em;
+padding: 20px 0;	/*上下、左右へのボックス内の余白*/
+}
+#copyright a {text-decoration: none;}
+/*アイコン全体を囲むブロック*/
+ul.icon {
+	margin-bottom: 20px;
+}
+/*アイコン１個あたりの設定*/
+ul.icon li {
+	display: inline-block;	/*横並びにさせる指定*/
+}
+/*アイコン画像の設定*/
+ul.icon img {
+	width: 30px;		/*画像の幅*/
+}
+ul.icon img:hover {
+	opacity: 0.8;
+}
+
+/*****メインコンテンツ・トップページ
+***********************************************/
+.article_top {
+margin: 30px auto 0;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+.section_top {
+align-self: flex-start; /*縦枠の調整*/
+width: 48.5%;
+padding: 2.5%; /*余白の指定*/
+margin-bottom: 30px;
+background-color: rgba(0, 0, 0, 0.8); /*背景色の指定*/
+}
+.section_top h1 {
+font-size: 24px; /*フォントサイズの指定*/
+color: #fff; /*文字色の変更*/
+letter-spacing: 0.1em; /*文字と文字の間隔をあける*/
+border-bottom: 1px solid #bababa; /*文字の下部に線を描く*/
+margin-bottom: 20px; /*セクションタイトルの下に余白をつくる*/
+}
+.section_top h2 {
+font-size: 16px; /*フォントサイズの指定*/
+color: #fff; /*文字色の変更*/
+letter-spacing: 0.1em; /*文字と文字の間隔をあける*/
+margin-bottom: 20px; /*セクションタイトルの下に余白をつくる*/
+}
+.section_top p {
+color: #fff; /*文字色の変更*/
+line-height: 1.75; /*行間をあける*/
+margin-bottom: 20px; /*文字とボタンの間をあける*/
+}
+.section_top .btn {
+color: #fff; /*文字色の変更*/
+background-color: #3998a7; /*背景色の指定*/
+padding: 10px 30px; /*文字上部の余白を指定*/
+border-radius: 5px; /*線の角を丸くする*/
+letter-spacing: 0.3em; /*文字と文字の間隔をあける*/
+text-decoration: none; /*ブラウザ標準のリンク装飾をオフに*/
+}
+.section_top .btn:hover {
+background-color: #fff; /*背景色の指定*/
+transition: all 0.5s; /*ホバー時の変化をなめらかに*/
+color: #3998a7; /*文字色の指定*/
+}
+.section_top img {
+width: 100%;
+margin-bottom: 10px;
+}
+.section_top iframe {
+width: 100%;
+margin-bottom: 10px;
+}
+/*****メインコンテンツ・ディスコグラフィー
+***********************************************/
+.article_discography {
+margin: 30px auto 0;
+}
+.section_discography {
+width: 100%; /*横幅の指定*/
+padding: 2.5%; /*余白の指定*/
+margin-bottom: 30px;
+background-color: rgba(0, 0, 0, 0.8); /*背景色の指定*/
+}
+.box_discography {
+display: flex;
+justify-content: space-around;
+}
+.box_left {
+width: 50%;
+}
+.box_right {
+width: 50%;
+}
+.section_discography h1 {
+font-size: 24px; /*フォントサイズの指定*/
+color: #fff; /*文字色の変更*/
+letter-spacing: 0.1em; /*文字と文字の間隔をあける*/
+}
+.section_discography h2 {
+font-size: 20px; /*フォントサイズの指定*/
+color: #fff; /*文字色の変更*/
+letter-spacing: 3px; /*文字と文字の間隔をあける*/
+border-bottom: 1px solid #bababa; /*文字の下部に線を描く*/
+margin-bottom: 20px; /*セクションタイトルの下に余白をつくる*/
+}
+.section_discography p {
+font-size: 14px;
+color: #ccc; /*文字色の変更*/
+line-height: 1.6; /*行間をあける*/
+}
+.section_discography img {
+max-width: 90%;
+margin-bottom: 10px;
+}
+.section_discography ul {
+list-style: none;
+}
+.section_discography li {
+color: #fff;
+font-weight: bold;
+font-size: 16px;
+line-height: 1.75;
+}
+/*****メインコンテンツ・ニュース
+***********************************************/
+.article_news {
+margin: 30px auto 0;
+}
+.section_news {
+width: 100%; /*横幅の指定*/
+padding: 2.5%; /*余白の指定*/
+margin-bottom: 30px;
+background-color: rgba(0, 0, 0, 0.8); /*背景色の指定*/
+}
+.box_news {
+display: flex;
+justify-content: space-around;
+}
+.box_left {
+width: 50%;
+}
+.box_right {
+width: 50%;
+}
+.section_news h1 {
+font-size: 24px; /*フォントサイズの指定*/
+color: #fff; /*文字色の変更*/
+letter-spacing: 0.1em; /*文字と文字の間隔をあける*/
+}
+.section_news h2 {
+font-size: 20px; /*フォントサイズの指定*/
+color: #fff; /*文字色の変更*/
+letter-spacing: 3px; /*文字と文字の間隔をあける*/
+border-bottom: 1px solid #bababa; /*文字の下部に線を描く*/
+margin-bottom: 20px; /*セクションタイトルの下に余白をつくる*/
+}
+.section_news p {
+font-size: 14px;
+color: #ccc; /*文字色の変更*/
+line-height: 1.6; /*行間をあける*/
+}
+.section_news img {
+max-width: 200px;
+margin-bottom: 10px;
+}
+.section_news ul {
+list-style: none;
+}
+.section_news li {
+color: #fff;
+font-weight: bold;
+font-size: 16px;
+line-height: 1.75;
+}
+/* index.html　メインビジュアル */
+.main-image {
+width: 100%;
+}
+.main-image img {
+width: 100%;
+}
+/* inde.html スライド */
+#slideshow {
+position: relative;
+height: 400px;
+}
+#slideshow IMG {
+position: absolute;
+top: 0;
+left: 0;
+z-index: 8;
+opacity: 0;
+}
+#slideshow IMG.active {
+z-index: 10;
+opacity: 1;
+}
+#slideshow IMG.last-active {
+z-index: 9;
+}
+

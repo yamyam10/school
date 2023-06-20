@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSの練習</title>
+</head>
+<body>
+    <button id="buy">押す</button>
+    <p id="result">
+        結果
+    </p>
+    <p id="count">
+        0回
+    </p>
+    <script>
+
+        const button = document.getElementById("buy")
+
+        // 引いた数
+        let count = 0
+
+        // 合計の数
+        let total = 0
+
+        // ボタンがクリックされたら
+        button.onclick = function () {
+            // Randomな数字を出して、
+            // Math.random (0 <= x < 1) 0.12
+            // Math.floor
+            const random = Math.floor(Math.random() * 10000)
+            count = count + 1
+            // コード上の値と同じなら1等
+            console.log(random);
+            if(random === 4) {
+                total = total - 300000000
+            } else {
+                // ハズレなら, 使った合計金額を出す。
+                total = total + 30000000
+            }
+
+            document.getElementById("result").innerHTML = "合計金額 " + total
+            document.getElementById("count").innerHTML = "合計回数 " + count
+        }
+
+
+        // 変数
+        // var
+        let name = "hirosawa";
+        // name = "koizumi";
+
+        // 定数
+        // const
+        // const age = 17;
+
+        // if(name === "hirosawa") {
+        // }
+
+        // function 名前(引数) {
+        //     return 戻り値
+        // }
+
+        // function (引数) {
+        //     return 戻り値
+        // }
+
+    </script>
+</body>
+</html>
+

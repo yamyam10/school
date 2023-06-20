@@ -1,0 +1,28 @@
+cd hal
+
+cd jv32
+
+cd 0515_Kadai01
+
+//javac Main.java
+//java jp.ac.hal.Main.java
+
+javac Main.java -d .
+
+java Main.java
+
+
+メモ
+1.javac の後にTabキーを押す。
+2.パッケージファイル作成するときは「-d .」を追加する。
+3.大文字小文字に気を付ける。
+4.配列の長さをとるには 変数名.length を付ける
+
+フォルダの作り方
+1.ファイル
+2.新規
+3.JAVAプロジェクト
+4.パッケージエクスプローラーから
+5.src右クリック新規
+6.その他→JAVA→クラス
+(7.パッケージに　jp.ac.hal　を入力)

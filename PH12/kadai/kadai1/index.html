@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォームに入力</title>
+</head>
+<body>
+    <p>名前と年齢を入力してください</p>
+    <!-- action->ファイル名送信先 -->
+    <form action="submit.php" method="get">
+        <label for="my_name">名前：</label>
+        <!-- 名前入力欄 -->
+        <input type="text" id="my_name" name="my_name"><br>
+        <label for="my_nen">年齢：</label>
+        <!-- 年齢入力欄 -->
+        <input type="text" id="my_nen" name="my_nen"><br>
+        <!-- 送信ボタン -->
+        <input type="submit">
+    </form>
+</body>
+</html>

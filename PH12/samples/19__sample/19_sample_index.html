@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チェックボックスを使おう</title>
+</head>
+<body>
+    <form action="19_sample_submit.php" method="post">
+        <p>ご予約希望日（複数選択可能）</p><br>
+        <!-- チェックボックス -->
+        <p>
+        <input type="checkbox" name="reserve[]" value="0101">1月1日<br>
+        <input type="checkbox" name="reserve[]" value="0102">1月2日<br>
+        <input type="checkbox" name="reserve[]" value="0103">1月3日<br>
+        </p>
+        <!-- 送信ボタン -->
+        <input type="submit" value="送信する">
+    </form>
+</body>
+</html>

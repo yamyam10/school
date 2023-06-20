@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課題02</title>
+</head>
+<body>
+    <!-- action->ファイル名送信先 -->
+    <form action="view.php" method="post">
+        <!-- 名前入力欄 -->
+        <label for="my_name">名前：</label>
+        <input type="text" id="my_name" name="my_name"><br>
+        <!-- ラジオボタン　性別 -->
+        <p>性別：
+            <input type="radio" name="gender" value="男性" >男性
+            <input type="radio" name="gender" value="女性" >女性
+        </p>
+        <!-- チェックボックス　趣味 -->
+        <p>趣味：
+            <input type="checkbox" name="reserve[]" value="読書">読書
+            <input type="checkbox" name="reserve[]" value="ゲーム">ゲーム
+            <input type="checkbox" name="reserve[]" value="映画鑑賞">映画鑑賞
+            <input type="checkbox" name="reserve[]" value="スポーツ">スポーツ
+            <input type="checkbox" name="reserve[]" value="旅行">旅行
+        </p>
+        <!-- 送信ボタン -->
+        <input type="submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wolfgang's</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <header>
+        <!-- <h1>WOLFGANG'S</h1>
+        <h3>STEAKHOUSE</h3> -->
+        <div id="Home" class="sign">
+            <span class="sp1">WOLFGANG'S</span>
+            <span class="sp2">STEAKHOUSE</span>
+        </div>
+        <nav>
+            <ul>
+            <li><a class="link" href="#">Home</a></li>
+            <li><a class="link" href="#news">News</a></li>
+            <li><a class="link" href="#menu">Menu</a></li>
+            <li><a class="link" href="#Access">Access</a></li>
+            </ul>
+        </nav>
+        <img class="topimg" src="https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG59EUKGnTyWBk1kAgUhy5Wf1VQvtNcDK8jQI0C9BfZ70gU1C3xAKMqWwwntskcKr1kKyztKR7jI2QUoSa5LfrFwP2_HqYpimZIj1dvAiyb5S5Z2NwjwQE5q-K3J599kbkYfo43vdcXNpdnqoX7zyAOhN7CPKf_fTwm9QC8gwRnZbfrHW7s8TeEWPW1CX056crQ==/01.jpg?errorImage=false" alt="" style="width: 60%;">
+    </header>
+    <!-- <h2 id="news">ニュース</h2> -->
+    <!-- <ul class="news"></ul> -->
+    <div id="news" class="container neon-box">
+        <h2 class="neon-text-back">NEWS</h2>
+        <h2 class="neon-text">ニュース</h2>
+        <ul class="news"></ul>
+    </div>
+    <h2 class="neon-text-back">MENU</h2>
+    <h2 class="neon-text-menu" id="menu">メニュー</h2>
+    <ul class="menu box"></ul>
+    <h2 class="neon-text-back">ACCESS</h2>
+    <h2 class="neon-text-menu" id="Access">アクセス</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13294.38869949857!2d130.4105821!3d33.5898068!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9492d98a4ce0f2a7!2z44Km44Or44OV44Ku44Oj44Oz44Kw44O744K544OG44O844Kt44OP44Km44K5IGJ5IOOCpuODq-ODleOCruODo-ODs-OCsOODu-OCuuOCpuOCo-ODiuODvCDnpo_lsqHlupc!5e0!3m2!1sja!2sjp!4v1674636556702!5m2!1sja!2sjp" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <div id="page_top"><a href="#"></a></div>
+    <!-- <div id="page_top"><a class="link" href="#"></a></div> -->
+    <template id="menuItem">
+        <li class="test">
+            <img class="thumbnail" src="" alt=""><br>
+            <span class="title"></span><br>
+            <span class="price"></span><br>
+            <p class="body"></p>
+        </li>
+    </template>
+    <footer class="footer">
+        <nav>
+            <ul>
+            <li><a class="link" href="#">Home</a></li>
+            <li><a class="link" href="#news">News</a></li>
+            <li><a class="link" href="#menu">Menu</a></li>
+            <li><a class="link" href="#Access">Access</a></li>
+            </ul>
+        </nav>
+    </footer>
+    <ul class="sns_icon">
+        <li style="--clr:#1da1f2"><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+        <li style="--clr:#dd2a7b"><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+        <li style="--clr:#ff0000"><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+        <li style="--clr:#25d366"><a href=""><i class="fa-brands fa-line"></i></a></li>
+    </ul>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        // お知らせを取得する
+        // createElementを使う
+        axios
+            .get("https://s0g9aq80hi.microcms.io/api/v1/news", {
+                headers: {"X-MICROCMS-API-KEY": "krO1GnXmFjYlc4T3f23oOnBJiJmryOcAJpQG"}
+            })
+            .then(res => {
+                // 取得に成功
+                console.log(res.data);
+
+                for (const content of res.data.contents) {
+                    const li = document.createElement("li")
+                    const p = document.createElement("p")
+                    li.innerHTML = content.title
+                    p.innerHTML = content.body
+                    document.querySelector(".news").appendChild(li)
+                    if (content.body){
+                    document.querySelector(".news").appendChild(p)
+                    document.querySelector(".news p p span").style.color = ""
+                    }
+                }
+            }).then(()=>{
+                var seach = document.querySelectorAll(".news p p");
+                seach.forEach((element) => {
+                    element.textContent = element.textContent.replace("■","");
+                })
+            })
+            
+
+        // メニューを取得する
+        // templateタグを使う
+        axios
+            .get("https://s0g9aq80hi.microcms.io/api/v1/menu", {
+                headers: {"X-MICROCMS-API-KEY": "krO1GnXmFjYlc4T3f23oOnBJiJmryOcAJpQG"}
+            })
+            .then(res => {
+                // 取得に成功
+                debugger;
+                console.log(res.data);
+
+                for (const content of res.data.contents) {
+                    // templateを取得する
+                    const template = document.getElementById("menuItem")
+                    // templateの中のliタグを複製する
+                    const li = template.content.cloneNode(true)
+                    // 情報を書き換える
+                    li.querySelector(".thumbnail").src = content.thumbnail.url
+                    li.querySelector(".title").innerHTML = content.title
+                    li.querySelector(".price").innerHTML = `${content.price}円`
+                    // 追加する
+                    if (content.body){
+                        li.querySelector(".body").innerHTML = content.body
+                    }
+                    document.querySelector(".menu").appendChild(li)
+                }
+
+
+            })
+
+    </script>
+</body>
+</html>

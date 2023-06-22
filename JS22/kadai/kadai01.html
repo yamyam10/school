@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS22 Kadai01</title>
+</head>
+<body>
+    <div>
+        <h1 id="title">Q. モンスターは飲み物である</h1>
+        <ul class="list">
+                <button id="o">O</button>
+                <button id="x">X</button>
+        </ul>
+        <div class="result">
+            <p class="title"></p>
+            <p class="description"></p>
+
+            
+            <button id="next">次の問題へ</button>
+        </div>
+    </div>
+    <style>
+        
+    </style>
+    <script>
+        // button 押したら
+
+        // function 名前(引数) {処理}
+        // function (引数) {処理}
+
+        let count = 0
+        document.getElementById("o").onclick = function(e) {
+            // buttonを押したときに実行される処理を書く
+            if (count % 3 === 0) {
+                document.querySelector(".result .title").innerHTML = "正解"
+                document.querySelector(".result .description").innerHTML = "飲み物です"
+            } else if (count % 3 === 1) {
+                document.querySelector(".result .title").innerHTML = "不正解"
+                document.querySelector(".result .description").innerHTML = "多いのは神社です"
+            } else if (count % 3 === 2) {
+                document.querySelector(".result .title").innerHTML = "正解"
+                document.querySelector(".result .description").innerHTML = "ポッキーのほうが長いです"
+            }
+        }
+
+        document.getElementById("x").onclick = function(e) {
+            // buttonを押したときに実行される処理を書く
+            if (count % 3 === 0) {
+                document.querySelector(".result .title").innerHTML = "不正解"
+                document.querySelector(".result .description").innerHTML = "飲み物です"
+            } else if (count % 3 === 1) {
+                document.querySelector(".result .title").innerHTML = "正解"
+                document.querySelector(".result .description").innerHTML = "多いのは神社です"
+            } else if (count % 3 === 2) {
+                document.querySelector(".result .title").innerHTML = "不正解"
+                document.querySelector(".result .description").innerHTML = "ポッキーのほうが長いです"
+            }
+        }
+
+        document.getElementById("next").onclick = function(e) {
+            // buttonを押したときに実行される処理を書く
+            count = (count + 1) % 3
+            document.querySelector(".result .title").innerHTML = ""
+            document.querySelector(".result .description").innerHTML = ""
+            if (count % 3 === 0) {
+                document.querySelector("#title").innerHTML = "Q. モンスターは飲み物である"
+            } else if (count % 3 === 1) {
+                document.querySelector("#title").innerHTML = "Q. 神社と寺、多いのは寺である"
+            } else if (count % 3 === 2) {
+                document.querySelector("#title").innerHTML = "Q. ポッキーとプリッツ長いのはポッキーである"
+            }
+        }
+
+    </script>
+</body>
+</html>
